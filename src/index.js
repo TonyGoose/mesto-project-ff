@@ -13,6 +13,7 @@ import {
 
 const container = document.querySelector('.places__list');
 
+const popupList = Array.from(document.querySelectorAll(".popup"));
 
 const addPopup = document.querySelector('.popup_type_new-card');
 const editPopup = document.querySelector('.popup_type_edit');
@@ -58,6 +59,18 @@ editPopupButton.addEventListener('click', () => {
   showPopupHandle(editPopup);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+});
+
+popupList.forEach((popup) => {
+  popup.addEventListener("mouseup", (event) => {
+    const targetClassList = event.target.classList;
+    if (
+      targetClassList.contains("popup") ||
+      targetClassList.contains("popup__close")
+    ) {
+      closePopupHandle(popup);
+    }
+  });
 });
 
 function handleFormSubmit(evt) {

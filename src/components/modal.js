@@ -36,4 +36,3 @@ function closePopupHandle(popup) {
   popup.classList.remove("popup_is-opened");
   document.removeEventListener('keydown', CloseModalKey);
 }
-
