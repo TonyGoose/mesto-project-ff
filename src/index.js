@@ -87,7 +87,7 @@ function handleAddSubmit(evt) {
 
   const newPlaceData = { name: placeName.value, link: placeLink.value };
 
-  addCard(newPlaceData, deleteCard);
+  addCardToContainer(newPlaceData, deleteCardHandler);
 
   addFormElement.reset();
 }

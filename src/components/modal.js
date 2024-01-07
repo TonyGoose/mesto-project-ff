@@ -1,5 +1,3 @@
-export { CloseModalKey, showPopupHandle, closePopupHandle };
-
 function showPopupHandle(popup) {
   popup.classList.add("popup_is-opened");
 
@@ -18,4 +16,4 @@ function CloseModalKey(evt) {
   }
 }
 
-
+export { CloseModalKey, showPopupHandle, closePopupHandle };

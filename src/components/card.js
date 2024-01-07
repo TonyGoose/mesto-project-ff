@@ -1,7 +1,4 @@
-export { createCardElement, deleteCardHandler, likeCardHandler }
-
 const template = document.querySelector("#card-template").content;
-
 
 function createCardElement(card, deleteCardHandler, likeCardHandler, clickImageHandle) {
   const cardElement = template.querySelector(".places__item").cloneNode(true);
@@ -27,3 +24,5 @@ function deleteCardHandler(evt) {
 function likeCardHandler(evt) {
   evt.target.classList.toggle('card__like-button_is-active');
 }
+
+export { createCardElement, deleteCardHandler, likeCardHandler }
