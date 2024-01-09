@@ -8,7 +8,7 @@ import {
 import {
   showPopupHandle,
   closePopupHandle,
-  CloseModalKey,
+  closeModalKey,
 } from './components/modal.js';
 
 const container = document.querySelector('.places__list');
@@ -23,16 +23,17 @@ const addFormElement = document.querySelector('form[name="new-place"]');
 const placeName = addFormElement.querySelector('input[name="place-name"]');
 const placeLink = addFormElement.querySelector('input[name="link"]');
 
-const formEditProfile = document.querySelector('form[name="edit-profile"]');
-const nameInput = formEditProfile.querySelector('input[name="name"]');
-const jobInput = formEditProfile.querySelector('input[name="description"]');
-
-const addPopupButton = document.querySelector('.profile__add-button');
+const formEditProfile = document.forms['edit-profile'];
+const nameInput = formEditProfile.elements.name;
+const jobInput = formEditProfile.elements.description;
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__description');
+const addPopupButton = document.querySelector('.profile__add-button');
+
 
 const imagePopup = document.querySelector('.popup_type_image');
 const cardPopupImage = document.querySelector('.popup__image');
+const imageСaption = imagePopup.querySelector('.popup__caption');
 
 function addCardToContainer(card) {
   const newCard = createCardElement(
@@ -48,7 +49,7 @@ function addCardToContainer(card) {
 }
 
 initialCards.forEach((cards) => {
-  addCardToContainer(cards, clickImageHandle);
+  addCardToContainer(cards);
 });
 
 addPopup.addEventListener('submit', () => closePopupHandle(addPopup));
@@ -73,21 +74,21 @@ popupList.forEach((popup) => {
   });
 });
 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 }
 
-formEditProfile.addEventListener('submit', handleFormSubmit);
+formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 function handleAddSubmit(evt) {
   evt.preventDefault();
 
   const newPlaceData = { name: placeName.value, link: placeLink.value };
 
-  addCardToContainer(newPlaceData, deleteCardHandler);
+  addCardToContainer(newPlaceData);
 
   addFormElement.reset();
 }
@@ -107,8 +108,7 @@ function clickImageHandle(evt) {
 
   cardPopupImage.src = cardImage.src;
   cardPopupImage.alt = cardImage.alt;
+  imageСaption.textContent = evt.target.alt;
 
   showPopupHandle(imagePopup);
-
-  document.addEventListener('keydown', CloseModalKey);
 }

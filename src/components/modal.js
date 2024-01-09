@@ -1,19 +1,19 @@
 function showPopupHandle(popup) {
   popup.classList.add("popup_is-opened");
 
-  document.addEventListener("keydown", CloseModalKey);
+  document.addEventListener("keydown", closeModalKey);
 }
 
 function closePopupHandle() {
   const popup = document.querySelector(".popup_is-opened");
   popup.classList.remove("popup_is-opened");
-  document.removeEventListener("keydown", CloseModalKey);
+  document.removeEventListener("keydown", closeModalKey);
 }
 
-function CloseModalKey(evt) {
+function closeModalKey(evt) {
   if (evt.code === "Escape") {
     closePopupHandle();
   }
 }
 
-export { CloseModalKey, showPopupHandle, closePopupHandle };
+export { closeModalKey, showPopupHandle, closePopupHandle };
