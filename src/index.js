@@ -52,10 +52,18 @@ initialCards.forEach((cards) => {
   addCardToContainer(cards);
 });
 
-addPopup.addEventListener('submit', () => closePopupHandle(addPopup));
+addPopup.addEventListener('submit', (evt) => {
+  evt.preventDefault(); 
+  closePopupHandle(addPopup); 
+}); 
+
 addPopupButton.addEventListener('click', () => showPopupHandle(addPopup));
 
-editPopup.addEventListener('submit', () => closePopupHandle(editPopup));
+editPopup.addEventListener('submit', (evt) => {
+  evt.preventDefault(); 
+  closePopupHandle(editPopup); 
+}); 
+
 editPopupButton.addEventListener('click', () => {
   showPopupHandle(editPopup);
   nameInput.value = profileName.textContent;
@@ -63,8 +71,8 @@ editPopupButton.addEventListener('click', () => {
 });
 
 popupList.forEach((popup) => {
-  popup.addEventListener("mouseup", (event) => {
-    const targetClassList = event.target.classList;
+  popup.addEventListener("mouseup", (evt) => {
+    const targetClassList = evt.target.classList;
     if (
       targetClassList.contains("popup") ||
       targetClassList.contains("popup__close")

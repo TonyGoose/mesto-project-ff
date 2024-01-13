@@ -9,8 +9,10 @@ function createCardElement(card, deleteCardHandler, likeCardHandler, clickImageH
   cardElement.querySelector(".card__image").src = card.link;
   cardElement.querySelector(".card__image").alt = card.name;
 
+  const cardImage = cardElement.querySelector(".card__image");
+  cardImage.addEventListener('click', clickImageHandle);
+
   deleteButton.addEventListener("click", deleteCardHandler);
-  cardElement.addEventListener('click', clickImageHandle);
   likeButton.addEventListener("click", likeCardHandler);
 
   return cardElement;
