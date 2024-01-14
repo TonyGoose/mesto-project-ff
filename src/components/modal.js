@@ -16,4 +16,4 @@ function closeModalKey(evt) {
   }
 }
 
-export { closeModalKey, showPopupHandle, closePopupHandle };
+export { showPopupHandle, closePopupHandle };

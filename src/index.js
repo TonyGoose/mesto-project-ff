@@ -8,7 +8,6 @@ import {
 import {
   showPopupHandle,
   closePopupHandle,
-  closeModalKey,
 } from './components/modal.js';
 
 const container = document.querySelector('.places__list');
@@ -18,6 +17,7 @@ const popupList = Array.from(document.querySelectorAll(".popup"));
 const addPopup = document.querySelector('.popup_type_new-card');
 const editPopup = document.querySelector('.popup_type_edit');
 const editPopupButton = document.querySelector('.profile__edit-button');
+const formElement = document.querySelector('.popup__form')
 
 const addFormElement = document.querySelector('form[name="new-place"]');
 const placeName = addFormElement.querySelector('input[name="place-name"]');
@@ -52,17 +52,7 @@ initialCards.forEach((cards) => {
   addCardToContainer(cards);
 });
 
-addPopup.addEventListener('submit', (evt) => {
-  evt.preventDefault(); 
-  closePopupHandle(addPopup); 
-}); 
-
 addPopupButton.addEventListener('click', () => showPopupHandle(addPopup));
-
-editPopup.addEventListener('submit', (evt) => {
-  evt.preventDefault(); 
-  closePopupHandle(editPopup); 
-}); 
 
 editPopupButton.addEventListener('click', () => {
   showPopupHandle(editPopup);
@@ -84,39 +74,28 @@ popupList.forEach((popup) => {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
+  closePopupHandle();
 }
 
-formEditProfile.addEventListener('submit', handleProfileFormSubmit);
+formElement.addEventListener('submit', handleProfileFormSubmit);
 
 function handleAddSubmit(evt) {
   evt.preventDefault();
-
   const newPlaceData = { name: placeName.value, link: placeLink.value };
-
   addCardToContainer(newPlaceData);
-
   addFormElement.reset();
+  closePopupHandle();
 }
 
 addFormElement.addEventListener('submit', handleAddSubmit);
 
 function clickImageHandle(evt) {
-  if (
-    evt.target.classList.contains('card__delete-button') ||
-    evt.target.classList.contains('card__like-button')
-  ) {
-    return;
-  }
-
   const card = evt.target.closest('.places__item');
   const cardImage = card.querySelector('.card__image');
-
   cardPopupImage.src = cardImage.src;
   cardPopupImage.alt = cardImage.alt;
   imageСaption.textContent = evt.target.alt;
-
   showPopupHandle(imagePopup);
 }

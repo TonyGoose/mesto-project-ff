@@ -6,12 +6,12 @@ function createCardElement(card, deleteCardHandler, likeCardHandler, clickImageH
   const likeButton = cardElement.querySelector(".card__like-button");
   
   cardElement.querySelector(".card__title").textContent = card.name;
-  cardElement.querySelector(".card__image").src = card.link;
-  cardElement.querySelector(".card__image").alt = card.name;
 
   const cardImage = cardElement.querySelector(".card__image");
-  cardImage.addEventListener('click', clickImageHandle);
+  cardImage.src = card.link;
+  cardImage.alt = card.name;
 
+  cardImage.addEventListener('click', clickImageHandle);
   deleteButton.addEventListener("click", deleteCardHandler);
   likeButton.addEventListener("click", likeCardHandler);
 
