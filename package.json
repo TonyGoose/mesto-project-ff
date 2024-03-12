@@ -1,7 +1,7 @@
 {
   "name": "mesto-project-ff",
   "version": "1.0.0",
-  "description": "Ссылка на проект - https://github.com/TonyGoose/mesto-project-ff.git",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
