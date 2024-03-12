@@ -18,7 +18,6 @@ import { showPopupHandle, closePopupHandle } from "./components/modal.js";
 import { clearValidation, enableValidation } from "./components/validation.js";
 
 const container = document.querySelector(".places__list");
-
 const popupList = Array.from(document.querySelectorAll(".popup"));
 
 const addPopup = document.querySelector(".popup_type_new-card");
@@ -111,7 +110,6 @@ popupList.forEach((popup) => {
 avatarPopup.addEventListener("submit", () => closePopupHandle(avatarPopup));
 avatarEdit.addEventListener("click", () => showPopupHandle(avatarPopup));
 
-// Форма редактирования аватара
 function handleEditAvatar(evt) {
   evt.preventDefault();
   avatarPopupSaveButton.textContent = "Сохранение...";
@@ -129,8 +127,6 @@ function handleEditAvatar(evt) {
 }
 
 avatarFormElement.addEventListener("submit", handleEditAvatar);
-
-// Форма редактирования профиля
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -151,7 +147,6 @@ function handleProfileFormSubmit(evt) {
 formElement.addEventListener("submit", handleProfileFormSubmit);
 editPopupSaveButton.addEventListener("click", () => {});
 
-//поп-ап с добавлением карточки
 function handleAddSubmit(evt) {
   evt.preventDefault();
   addPopupSaveButton.textContent = "Сохранение...";
@@ -172,7 +167,6 @@ addFormElement.addEventListener("submit", handleAddSubmit, () => {
   clearValidation(addFormElement, validationSettingsObject);
 });
 
-//поп-ап с картинкой
 function clickImageHandle(evt) {
   if (
     evt.target.classList.contains("card__delete-button") ||
