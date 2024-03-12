@@ -16,4 +16,14 @@ function closeModalKey(evt) {
   }
 }
 
-export { showPopupHandle, closePopupHandle };
+const closePopupByOverlay = (evt) => {
+  const targetClassList = evt.target.classList;
+  if (
+    targetClassList.contains("popup") ||
+    targetClassList.contains("popup__close")
+  ) {
+    popupHandleCloser(evt.currentTarget);
+  }
+};
+
+export { showPopupHandle, closePopupHandle, closePopupByOverlay };
