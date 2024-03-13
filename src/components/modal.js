@@ -22,7 +22,7 @@ const closePopupByOverlay = (evt) => {
     targetClassList.contains("popup") ||
     targetClassList.contains("popup__close")
   ) {
-    popupHandleCloser(evt.currentTarget);
+    closePopupHandle(evt.currentTarget);
   }
 };
 

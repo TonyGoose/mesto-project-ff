@@ -14,12 +14,10 @@ import {
   likeCardHandler,
 } from "./components/card.js";
 
-import { showPopupHandle, closePopupHandle } from "./components/modal.js";
+import { showPopupHandle, closePopupHandle, closePopupByOverlay } from "./components/modal.js";
 import { clearValidation, enableValidation } from "./components/validation.js";
 
 const container = document.querySelector(".places__list");
-const popupList = Array.from(document.querySelectorAll(".popup"));
-
 const addPopup = document.querySelector(".popup_type_new-card");
 const editPopup = document.querySelector(".popup_type_edit");
 const editPopupSaveButton = editPopup.querySelector(".popup__button");
@@ -30,7 +28,6 @@ const avatarPopupSaveButton = avatarPopup.querySelector(".popup__button");
 const addFormElement = document.querySelector('form[name="new-place"]');
 const placeName = addFormElement.querySelector('input[name="place-name"]');
 const placeLink = addFormElement.querySelector('input[name="link"]');
-
 const formEditProfile = document.forms["edit-profile"];
 const nameInput = formEditProfile.elements.name;
 const jobInput = formEditProfile.elements.description;
@@ -40,8 +37,6 @@ const addPopupButton = document.querySelector(".profile__add-button");
 const addPopupSaveButton = addPopup.querySelector(".popup__button");
 const imagePopup = document.querySelector(".popup_type_image");
 const cardPopupImage = document.querySelector(".popup__image");
-const imageСaption = imagePopup.querySelector(".popup__caption");
-
 const avatarEdit = document.querySelector(".profile__image");
 const avatarInlineStyles = avatarEdit.style;
 const avatarFormElement = document.querySelector('form[name="edit-avatar"]');
@@ -95,16 +90,9 @@ editPopupButton.addEventListener("click", () => {
   clearValidation(editPopup, validationSettingsObject);
 });
 
+const popupList = Array.from(document.querySelectorAll(".popup"));
 popupList.forEach((popup) => {
-  popup.addEventListener("mouseup", (evt) => {
-    const targetClassList = evt.target.classList;
-    if (
-      targetClassList.contains("popup") ||
-      targetClassList.contains("popup__close")
-    ) {
-      closePopupHandle(popup);
-    }
-  });
+  popup.addEventListener("mouseup", closePopupByOverlay);
 });
 
 avatarPopup.addEventListener("submit", () => closePopupHandle(avatarPopup));
