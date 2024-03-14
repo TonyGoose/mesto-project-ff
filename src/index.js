@@ -140,7 +140,7 @@ function handleAddSubmit(evt) {
   addPopupSaveButton.textContent = "Сохранение...";
   addNewCard(placeName.value, placeLink.value)
     .then((card) => {
-      addCard(card, profileId);
+      addCardToContainer(card, profileId);
       addFormElement.reset();
     })
     .finally(() => {

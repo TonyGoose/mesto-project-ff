@@ -2,7 +2,13 @@ import { deleteCard, likeCard, unLikeCard } from "./api.js";
 
 const template = document.querySelector("#card-template").content;
 
-function createCardElement(card, deleteCardHandler, likeCardHandler, clickImageHandle, profileId) {
+function createCardElement(
+  card,
+  deleteCardHandler,
+  likeCardHandler,
+  clickImageHandle,
+  profileId
+) {
   const cardElement = template.querySelector(".places__item").cloneNode(true);
   const deleteButton = cardElement.querySelector(".card__delete-button");
   const likeButton = cardElement.querySelector(".card__like-button");
@@ -55,4 +61,4 @@ function likeCardHandler(evt, cardID, countForLikes) {
     .catch((err) => console.log(err));
 }
 
-export { createCardElement, deleteCardHandler, likeCardHandler }
+export { createCardElement, deleteCardHandler, likeCardHandler };

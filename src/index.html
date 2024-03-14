@@ -14,7 +14,7 @@
       <header class="header page__section">
         <img
           src="<%=require('./images/logo.svg')%>"
-          alt="Логотип проекта масто"
+          alt="Логотип проекта Место"
           class="logo header__logo"
         />
       </header>
@@ -40,6 +40,7 @@
           <button type="button" class="popup__close" aria-label="Закрыть модальное окно"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="edit-profile" novalidate>
+            <label class="form__field">
               <input
                 type="text"
                 name="name"
@@ -65,8 +66,9 @@
                 data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
                 required
               />
+            
               <span class="description-input-error popup__input-error-text"></span>
-
+            </label>
             <button type="submit" class="button popup__button">
               Сохранить
             </button>
