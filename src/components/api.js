@@ -44,16 +44,20 @@ const getUserData = () => {
   }).then(handleResponse);
 };
 
-const updateUserProfile = (name, job) => {
-  return fetch(`${config.Url}/users/me`, {
-    method: "PATCH",
-    headers: config.headers,
-    body: JSON.stringify({
-      name: name,
-      about: job,
-    }),
-  }).then(handleResponse);
-};
+// const updateUserProfile = (name, job) => {
+//   return fetch(`${config.Url}/users/me`, {
+//     method: "PATCH",
+//     headers: config.headers,
+//     body: JSON.stringify({
+//       name: name,
+//       about: job,
+//     }),
+//   }).then(handleResponse);
+// };
+
+function updateUserProfile (name, about) {
+  return getUserData("users/me", "PATCH", { name: name, about: about });
+}
 
 const addNewCard = (name, link) => {
   return fetch(`${config.Url}/cards`, {

@@ -22,15 +22,16 @@ const addPopup = document.querySelector(".popup_type_new-card");
 const editPopup = document.querySelector(".popup_type_edit");
 const editPopupSaveButton = editPopup.querySelector(".popup__button");
 const editPopupButton = document.querySelector(".profile__edit-button");
-const formElement = document.querySelector(".popup__form");
+const editFormElement = document.querySelector('form[name="edit-profile"]');
+const nameInput = editFormElement.querySelector('input[name="name"]');
+const jobInput = editFormElement.querySelector('input[name="description"]');
 const avatarPopup = document.querySelector(".popup_type_avatar");
 const avatarPopupSaveButton = avatarPopup.querySelector(".popup__button");
 const addFormElement = document.querySelector('form[name="new-place"]');
 const placeName = addFormElement.querySelector('input[name="place-name"]');
 const placeLink = addFormElement.querySelector('input[name="link"]');
-const formEditProfile = document.forms["edit-profile"];
-const nameInput = formEditProfile.elements.name;
-const jobInput = formEditProfile.elements.description;
+const popupImage = document.querySelector('.popup_type_image');
+const imageСaption = popupImage.querySelector('.popup__caption');
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
 const addPopupButton = document.querySelector(".profile__add-button");
@@ -125,14 +126,15 @@ function handleProfileFormSubmit(evt) {
       profileJob.textContent = jobInput.value;
     })
     .finally(() => {
-      avatarPopupSaveButton.textContent = "Cохранить";
+      editPopupSaveButton.textContent = "Cохранить";
     })
     .catch((err) => {
       console.log(err);
     });
+  closePopupHandle();
 }
 
-formElement.addEventListener("submit", handleProfileFormSubmit);
+editFormElement.addEventListener("submit", handleProfileFormSubmit);
 editPopupSaveButton.addEventListener("click", () => {});
 
 function handleAddSubmit(evt) {
@@ -144,7 +146,7 @@ function handleAddSubmit(evt) {
       addFormElement.reset();
     })
     .finally(() => {
-      avatarPopupSaveButton.textContent = "Cохранить";
+      addPopupSaveButton.textContent = "Cохранить";
     })
     .catch((err) => {
       console.log(err);
