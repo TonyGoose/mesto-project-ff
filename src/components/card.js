@@ -42,12 +42,14 @@ function createCardElement(
     likeCardHandler(evt, card._id, countForLikes);
   });
 
-  cardElement.addEventListener("click", clickImageHandle);
+  cardImage.addEventListener("click", clickImageHandle);
   return cardElement;
 }
 
 function deleteCardHandler(evt, cardID) {
-  deleteCard(cardID).then(() => evt.target.closest(".card").remove());
+  deleteCard(cardID)
+    .then(() => evt.target.closest(".card").remove())
+    .catch((err) => console.log(err));
 }
 
 function likeCardHandler(evt, cardID, countForLikes) {

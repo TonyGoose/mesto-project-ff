@@ -60,7 +60,6 @@ function addCardToContainer(card, profileId) {
     profileId
   );
   container.prepend(newCard);
-  return newCard;
 }
 
 let profileId;
@@ -105,14 +104,14 @@ function handleEditAvatar(evt) {
   updateUserAvatar(avatarNewLink.value)
     .then((res) => {
       avatarInlineStyles.backgroundImage = `url('${res.avatar}')`;
-    })
-    .finally(() => {
-      avatarPopupSaveButton.textContent = "Cохранить";
+      avatarFormElement.reset();
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      avatarPopupSaveButton.textContent = "Cохранить";
     });
-  avatarFormElement.reset();
 }
 
 avatarFormElement.addEventListener("submit", handleEditAvatar);
@@ -125,17 +124,16 @@ function handleProfileFormSubmit(evt) {
       profileName.textContent = nameInput.value;
       profileJob.textContent = jobInput.value;
     })
-    .finally(() => {
-      editPopupSaveButton.textContent = "Cохранить";
-    })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      editPopupSaveButton.textContent = "Cохранить";
     });
   closePopupHandle();
 }
 
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
-editPopupSaveButton.addEventListener("click", () => {});
 
 function handleAddSubmit(evt) {
   evt.preventDefault();
@@ -145,11 +143,11 @@ function handleAddSubmit(evt) {
       addCardToContainer(card, profileId);
       addFormElement.reset();
     })
-    .finally(() => {
-      addPopupSaveButton.textContent = "Cохранить";
-    })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      addPopupSaveButton.textContent = "Cохранить";
     });
 }
 
