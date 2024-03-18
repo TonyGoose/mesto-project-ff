@@ -42,6 +42,7 @@ const avatarEdit = document.querySelector(".profile__image");
 const avatarInlineStyles = avatarEdit.style;
 const avatarFormElement = document.querySelector('form[name="edit-avatar"]');
 const avatarNewLink = avatarFormElement.querySelector('input[name="link"]');
+const closePopupButtonList = document.querySelectorAll('.popup__close');
 
 const validationSettingsObject = {
   myForm: ".popup__form",
@@ -81,7 +82,6 @@ Promise.all([getUserData(), getInitialCards()])
 
 
 addPopupButton.addEventListener("click", () => showPopupHandle(addPopup));
-addPopup.addEventListener("submit", () => closePopupHandle(addPopup));
 
 editPopupButton.addEventListener("click", () => {
   showPopupHandle(editPopup);
@@ -123,6 +123,7 @@ function handleProfileFormSubmit(evt) {
     .then(() => {
       profileName.textContent = nameInput.value;
       profileJob.textContent = jobInput.value;
+      closePopupHandle(editPopup);
     })
     .catch((err) => {
       console.log(err);
@@ -130,7 +131,6 @@ function handleProfileFormSubmit(evt) {
     .finally(() => {
       editPopupSaveButton.textContent = "Cохранить";
     });
-  closePopupHandle();
 }
 
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
@@ -142,6 +142,7 @@ function handleAddSubmit(evt) {
     .then((card) => {
       addCardToContainer(card, profileId);
       addFormElement.reset();
+      closePopupHandle(addPopup);
     })
     .catch((err) => {
       console.log(err);
@@ -151,17 +152,9 @@ function handleAddSubmit(evt) {
     });
 }
 
-addFormElement.addEventListener("submit", handleAddSubmit, () => {
-  clearValidation(addFormElement, validationSettingsObject);
-});
+addFormElement.addEventListener("submit", handleAddSubmit);
 
 function clickImageHandle(evt) {
-  if (
-    evt.target.classList.contains("card__delete-button") ||
-    evt.target.classList.contains("card__like-button")
-  ) {
-    return;
-  }
   const card = evt.target.closest(".places__item");
   const cardImage = card.querySelector(".card__image");
   cardPopupImage.src = cardImage.src;
