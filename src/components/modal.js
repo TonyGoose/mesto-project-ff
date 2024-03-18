@@ -4,15 +4,17 @@ function showPopupHandle(popup) {
   document.addEventListener("keydown", closeModalKey);
 }
 
-function closePopupHandle() {
-  const popup = document.querySelector(".popup_is-opened");
+function closePopupHandle(popup) {
   popup.classList.remove("popup_is-opened");
   document.removeEventListener("keydown", closeModalKey);
 }
 
 function closeModalKey(evt) {
   if (evt.code === "Escape") {
-    closePopupHandle();
+  const popup = document.querySelector(".popup_is-opened");
+    if (popup) { 
+      closePopupHandle(popup);
+    }
   }
 }
 

@@ -95,7 +95,6 @@ popupList.forEach((popup) => {
   popup.addEventListener("mouseup", closePopupByOverlay);
 });
 
-avatarPopup.addEventListener("submit", () => closePopupHandle(avatarPopup));
 avatarEdit.addEventListener("click", () => showPopupHandle(avatarPopup));
 
 function handleEditAvatar(evt) {
@@ -105,6 +104,7 @@ function handleEditAvatar(evt) {
     .then((res) => {
       avatarInlineStyles.backgroundImage = `url('${res.avatar}')`;
       avatarFormElement.reset();
+      closePopupHandle(avatarPopup);
     })
     .catch((err) => {
       console.log(err);
