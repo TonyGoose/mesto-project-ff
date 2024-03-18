@@ -42,7 +42,6 @@ const avatarEdit = document.querySelector(".profile__image");
 const avatarInlineStyles = avatarEdit.style;
 const avatarFormElement = document.querySelector('form[name="edit-avatar"]');
 const avatarNewLink = avatarFormElement.querySelector('input[name="link"]');
-const closePopupButtonList = document.querySelectorAll('.popup__close');
 
 const validationSettingsObject = {
   myForm: ".popup__form",
