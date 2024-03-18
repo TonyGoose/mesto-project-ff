@@ -42,7 +42,6 @@ const avatarEdit = document.querySelector(".profile__image");
 const avatarInlineStyles = avatarEdit.style;
 const avatarFormElement = document.querySelector('form[name="edit-avatar"]');
 const avatarNewLink = avatarFormElement.querySelector('input[name="link"]');
-const closePopupButtonList = document.querySelectorAll('.popup__close');
 
 const validationSettingsObject = {
   myForm: ".popup__form",
@@ -105,6 +104,7 @@ function handleEditAvatar(evt) {
       avatarInlineStyles.backgroundImage = `url('${res.avatar}')`;
       avatarFormElement.reset();
       closePopupHandle(avatarPopup);
+      clearValidation(avatarPopup, validationSettingsObject);
     })
     .catch((err) => {
       console.log(err);
@@ -143,6 +143,7 @@ function handleAddSubmit(evt) {
       addCardToContainer(card, profileId);
       addFormElement.reset();
       closePopupHandle(addPopup);
+      clearValidation(addPopup, validationSettingsObject);
     })
     .catch((err) => {
       console.log(err);
